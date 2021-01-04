@@ -1,3 +1,5 @@
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
@@ -64,7 +66,7 @@ public class App {
 
                     System.out.println("Informe se o câmbio do carro é manual ou automático");
                     System.out.println("1 - Manual");
-                    System.out.println("2 - Hidráulico");
+                    System.out.println("2 - Automático");
 
                     Cambio cambio = in.nextInt() == 1 ? Cambio.MANUAL : Cambio.AUTOMATICO;
 
@@ -106,6 +108,76 @@ public class App {
 
 
             } else if(escolha.equals("L")){
+                Locacao locacao = new Locacao();
+                int whatsApp;
+
+                System.out.println("Informe a categoria da sua CNH");
+                System.out.println("1 - A");
+                System.out.println("2 - B");
+                System.out.println("3 - C");
+                System.out.println("4 - D");
+
+
+
+                switch(in.nextInt()){
+                    case 1:
+                    System.out.println("Estas são as motos disponiveis para locação.");
+                    ArrayList<Veiculo> motos = deposito.apenasMotos();
+                    deposito.listarArray(motos);
+                    System.out.println("Digite o número da moto que deseja");
+                    int motoIndex = in.nextInt();
+                    System.out.println("Digite seu número do whatsapp");
+                    whatsApp = in.nextInt();
+
+                    locacao.adicionarVeiculoLocado(motos.get(motoIndex).getPlaca(), whatsApp);
+
+                    locacao.listarVeiculosLocados();
+                    break;
+                    case 2:
+                    System.out.println("Estes são os carros disponiveis para locação.");
+                    ArrayList<Veiculo> carros = deposito.apenasCarros();
+                    deposito.listarArray(carros);
+                    System.out.println("Digite o número do carro que deseja");
+                    int carroIndex = in.nextInt();
+                    System.out.println("Digite o seu número do whatsapp");
+                    whatsApp = in.nextInt();
+
+                    locacao.adicionarVeiculoLocado(carros.get(carroIndex).getPlaca(), whatsApp);
+
+                    locacao.listarVeiculosLocados();
+
+                    case 3:
+
+                    System.out.println("Estes são os caminhoes e carros disponiveis para locação");
+                    ArrayList<Veiculo> carrosOuCaminhoes = deposito.carrosOuCaminhoes();
+                    deposito.listarArray(carrosOuCaminhoes);
+                    System.out.println("Digite o número do veículo que deseja");
+                    int carrosOuCaminhoesIndex = in.nextInt();
+                    System.out.println("Digite seu número do whatsapp");
+                    whatsApp = in.nextInt();
+
+                    locacao.adicionarVeiculoLocado(carrosOuCaminhoes.get(carrosOuCaminhoesIndex).getPlaca(), whatsApp);
+
+                    locacao.listarVeiculosLocados();
+
+                    case 4:
+
+                    System.out.println("Estes são os veiculos disponiveis para locação");
+                    ArrayList<Veiculo> todosMenosMotos = deposito.todosMenosMotos();
+                    deposito.listarArray(todosMenosMotos);
+                    System.out.println("Digite o número do veículo que deseja");
+                    int todosMenosMotosIndex = in.nextInt();
+                    System.out.println("Digite seu número do whatsapp");
+                    whatsApp = in.nextInt();
+
+                    locacao.adicionarVeiculoLocado(todosMenosMotos.get(todosMenosMotosIndex).getPlaca(), whatsApp);
+
+                    locacao.listarVeiculosLocados();
+
+                    default:
+                    break;
+                }
+
 
             } else {
                 estaRodando = false;
