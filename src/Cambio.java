@@ -4,7 +4,7 @@ public enum Cambio {
 
     private String descricao;
 
-    private Cambio(String descricao){
+    Cambio(String descricao){
         this.descricao = descricao;
     }
 
