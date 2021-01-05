@@ -21,6 +21,10 @@ public class App {
                 System.out.println("Informe a placa do veículo:\n");
                 String placa = in.next();
 
+                if(deposito.verificarSeJáCadastrado(placa)){
+                    throw new Exception("Veiculo já cadastrado");
+                }
+
                 System.out.println("Informe a marca do veículo:\n");
                 String marca = in.next();
 

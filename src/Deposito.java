@@ -105,4 +105,15 @@ public class Deposito {
         }
         return todosMenosMotos;
     }
+
+
+    public boolean verificarSeJáCadastrado(String placa){
+        
+        for(int i = 0; i < veiculos.size(); i++){
+            if(placa.equals(veiculos.get(i).getPlaca())){
+                return true;
+            }
+        }
+        return false;
+    }
 }
