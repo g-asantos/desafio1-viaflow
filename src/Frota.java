@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Deposito {
+public class Frota {
     public ArrayList<Veiculo> veiculos = new ArrayList<>();
 
 

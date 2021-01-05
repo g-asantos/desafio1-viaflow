@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Deposito deposito = new Deposito();
+        Frota frota = new Frota();
         Locacao locacao = new Locacao();
         Scanner in = new Scanner(System.in);
 
@@ -12,6 +12,8 @@ public class App {
         boolean estaRodando = true;
 
         while(estaRodando){
+            locacao.checarLocacoesQueTerminaram();
+
             System.out.println("(C) Cadastrar veiculo\n(L) Realizar locação\n(X) Encerrar");
 
             String escolha = in.next().toUpperCase();
@@ -21,7 +23,7 @@ public class App {
                 System.out.println("Informe a placa do veículo:\n");
                 String placa = in.next();
 
-                if(deposito.verificarSeJáCadastrado(placa)){
+                if(frota.verificarSeJáCadastrado(placa)){
                     throw new Exception("Veiculo já cadastrado");
                 }
 
@@ -49,14 +51,14 @@ public class App {
                     System.out.println("Informe as cilindradas da moto");
                     int cilindradas = in.nextInt();
                     Moto moto = new Moto(placa, marca, ano, cor, cilindradas);
-                    deposito.adicionarVeiculo(moto);
+                    frota.adicionarVeiculo(moto);
                     break;
                     case 2:
 
                     System.out.println("Informe o número de assentos do Onibus");
                     int assentos = in.nextInt();
                     Onibus onibus = new Onibus(placa,marca,ano,cor, assentos);
-                    deposito.adicionarVeiculo(onibus);
+                    frota.adicionarVeiculo(onibus);
                     break;
                     case 3:
 
@@ -97,14 +99,14 @@ public class App {
                     }
 
                     Carro carro = new Carro(placa,marca,ano,cor,portas, arcondicionado, cambio, direcao);
-                    deposito.adicionarVeiculo(carro);
+                    frota.adicionarVeiculo(carro);
                  
                     break;
                     case 4:
                     System.out.println("Informe a capacidade em toneladas do Caminhão");
                     int capacidade = in.nextInt();
                     Caminhao caminhao = new Caminhao(placa, marca, ano, cor, capacidade);
-                    deposito.adicionarVeiculo(caminhao);
+                    frota.adicionarVeiculo(caminhao);
                     break;
                     default:
                     break;
@@ -113,8 +115,6 @@ public class App {
 
             } else if(escolha.equals("L")){
                 
-                locacao.checarLocacoesQueTerminaram();
-
                 int whatsApp;
 
                 System.out.println("Informe a categoria da sua CNH");
@@ -128,8 +128,8 @@ public class App {
                 switch(in.nextInt()){
                     case 1:
                     System.out.println("Estas são as motos disponiveis para locação.");
-                    ArrayList<Veiculo> motos = deposito.apenasMotos();
-                    deposito.listarArray(motos);
+                    ArrayList<Veiculo> motos = frota.apenasMotos();
+                    frota.listarArray(motos);
                     System.out.println("Digite o número da moto que deseja");
                     int motoIndex = in.nextInt();
                     System.out.println("Digite seu número do whatsapp");
@@ -149,8 +149,8 @@ public class App {
                     break;
                     case 2:
                     System.out.println("Estes são os carros disponiveis para locação.");
-                    ArrayList<Veiculo> carros = deposito.apenasCarros();
-                    deposito.listarArray(carros);
+                    ArrayList<Veiculo> carros = frota.apenasCarros();
+                    frota.listarArray(carros);
                     System.out.println("Digite o número do carro que deseja");
                     int carroIndex = in.nextInt();
                     System.out.println("Digite o seu número do whatsapp");
@@ -165,12 +165,12 @@ public class App {
                     locacao.adicionarVeiculoLocado(carroLocado);
 
                     locacao.listarVeiculosLocados();
-
+                    break;
                     case 3:
 
                     System.out.println("Estes são os caminhoes e carros disponiveis para locação");
-                    ArrayList<Veiculo> carrosOuCaminhoes = deposito.carrosOuCaminhoes();
-                    deposito.listarArray(carrosOuCaminhoes);
+                    ArrayList<Veiculo> carrosOuCaminhoes = frota.carrosOuCaminhoes();
+                    frota.listarArray(carrosOuCaminhoes);
                     System.out.println("Digite o número do veículo que deseja");
                     int carrosOuCaminhoesIndex = in.nextInt();
                     System.out.println("Digite seu número do whatsapp");
@@ -185,12 +185,12 @@ public class App {
                     locacao.adicionarVeiculoLocado(carroOuCaminhaoLocado);
 
                     locacao.listarVeiculosLocados();
-
+                    break;
                     case 4:
 
                     System.out.println("Estes são os veiculos disponiveis para locação");
-                    ArrayList<Veiculo> todosMenosMotos = deposito.todosMenosMotos();
-                    deposito.listarArray(todosMenosMotos);
+                    ArrayList<Veiculo> todosMenosMotos = frota.todosMenosMotos();
+                    frota.listarArray(todosMenosMotos);
                     System.out.println("Digite o número do veículo que deseja");
                     int todosMenosMotosIndex = in.nextInt();
                     System.out.println("Digite seu número do whatsapp");
@@ -206,7 +206,7 @@ public class App {
                     locacao.adicionarVeiculoLocado(todosMenosMotosLocado);
 
                     locacao.listarVeiculosLocados();
-
+                    break;
                     default:
                     break;
                 }
@@ -216,6 +216,7 @@ public class App {
                 estaRodando = false;
                 in.close();
             }
+            
         }
     }
 }

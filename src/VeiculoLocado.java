@@ -35,6 +35,10 @@ public class VeiculoLocado {
         return location_expiration;
     }
 
+    public void setLocation_expiration(LocalDate location_expiration) {
+        this.location_expiration = location_expiration;
+    }
+
     
 
 }
