@@ -1,15 +1,14 @@
 import java.util.ArrayList;
 
+
+
 public class Locacao {
     public ArrayList<VeiculoLocado> locados = new ArrayList<>();
 
 
 
-    public void adicionarVeiculoLocado(String placa, int whatsApp) {
-
-        VeiculoLocado veiculoLocado = new VeiculoLocado(placa, whatsApp);
-
-        locados.add(veiculoLocado);
+    public void adicionarVeiculoLocado(VeiculoLocado v) {
+        locados.add(v);
         
         System.out.println("\nVeículo locado!");
     }
@@ -19,5 +18,18 @@ public class Locacao {
             System.out.println("\n " + "Veiculo de placa " + v.getPlaca() + ", o Whatsapp do locador é " + v.getWhatsapp());
         }
     }
+
+    public boolean verificarSeJáLocado(VeiculoLocado v){
+        
+        for(int i = 0; i < locados.size(); i++){
+            if(v.getPlaca().equals(locados.get(i).getPlaca())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+	
+    
     
 }

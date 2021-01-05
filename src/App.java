@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws Exception {
         Deposito deposito = new Deposito();
-
+        Locacao locacao = new Locacao();
         Scanner in = new Scanner(System.in);
 
 
@@ -15,7 +15,7 @@ public class App {
             System.out.println("(C) Cadastrar veiculo\n(L) Realizar locação\n(X) Encerrar");
 
             String escolha = in.next().toUpperCase();
-
+            
             if(escolha.equals("C")){
 
                 System.out.println("Informe a placa do veículo:\n");
@@ -108,7 +108,7 @@ public class App {
 
 
             } else if(escolha.equals("L")){
-                Locacao locacao = new Locacao();
+                
                 int whatsApp;
 
                 System.out.println("Informe a categoria da sua CNH");
@@ -128,8 +128,16 @@ public class App {
                     int motoIndex = in.nextInt();
                     System.out.println("Digite seu número do whatsapp");
                     whatsApp = in.nextInt();
+                    
 
-                    locacao.adicionarVeiculoLocado(motos.get(motoIndex).getPlaca(), whatsApp);
+                    VeiculoLocado motoLocada = new VeiculoLocado(motos.get(motoIndex).getPlaca(), whatsApp);
+
+                    if(locacao.verificarSeJáLocado(motoLocada)){
+                        throw new Exception("Veiculo já locado");
+                    }
+
+
+                    locacao.adicionarVeiculoLocado(motoLocada);
 
                     locacao.listarVeiculosLocados();
                     break;
@@ -142,7 +150,13 @@ public class App {
                     System.out.println("Digite o seu número do whatsapp");
                     whatsApp = in.nextInt();
 
-                    locacao.adicionarVeiculoLocado(carros.get(carroIndex).getPlaca(), whatsApp);
+                    VeiculoLocado carroLocado = new VeiculoLocado(carros.get(carroIndex).getPlaca(), whatsApp);
+
+                    if(locacao.verificarSeJáLocado(carroLocado)){
+                        throw new Exception("Veiculo já locado");
+                    }
+
+                    locacao.adicionarVeiculoLocado(carroLocado);
 
                     locacao.listarVeiculosLocados();
 
@@ -156,7 +170,13 @@ public class App {
                     System.out.println("Digite seu número do whatsapp");
                     whatsApp = in.nextInt();
 
-                    locacao.adicionarVeiculoLocado(carrosOuCaminhoes.get(carrosOuCaminhoesIndex).getPlaca(), whatsApp);
+                    VeiculoLocado carroOuCaminhaoLocado = new VeiculoLocado(carrosOuCaminhoes.get(carrosOuCaminhoesIndex).getPlaca(), whatsApp);
+
+                    if(locacao.verificarSeJáLocado(carroOuCaminhaoLocado)){
+                        throw new Exception("Veiculo já locado");
+                    }
+
+                    locacao.adicionarVeiculoLocado(carroOuCaminhaoLocado);
 
                     locacao.listarVeiculosLocados();
 
@@ -170,7 +190,14 @@ public class App {
                     System.out.println("Digite seu número do whatsapp");
                     whatsApp = in.nextInt();
 
-                    locacao.adicionarVeiculoLocado(todosMenosMotos.get(todosMenosMotosIndex).getPlaca(), whatsApp);
+
+                    VeiculoLocado todosMenosMotosLocado = new VeiculoLocado(todosMenosMotos.get(todosMenosMotosIndex).getPlaca(), whatsApp);
+
+                    if(locacao.verificarSeJáLocado(todosMenosMotosLocado)){
+                        throw new Exception("Veiculo já locado");
+                    }
+
+                    locacao.adicionarVeiculoLocado(todosMenosMotosLocado);
 
                     locacao.listarVeiculosLocados();
 
