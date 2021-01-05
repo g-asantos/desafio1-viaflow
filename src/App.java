@@ -118,15 +118,15 @@ public class App {
                 int whatsApp;
 
                 System.out.println("Informe a categoria da sua CNH");
-                System.out.println("1 - A");
-                System.out.println("2 - B");
-                System.out.println("3 - C");
-                System.out.println("4 - D");
+                System.out.println("A");
+                System.out.println("B");
+                System.out.println("C");
+                System.out.println("D");
 
 
 
-                switch(in.nextInt()){
-                    case 1:
+                switch(in.next().toUpperCase()){
+                    case "A":
                     System.out.println("Estas são as motos disponiveis para locação.");
                     ArrayList<Veiculo> motos = frota.apenasMotos();
                     frota.listarArray(motos);
@@ -147,7 +147,7 @@ public class App {
 
                     locacao.listarVeiculosLocados();
                     break;
-                    case 2:
+                    case "B":
                     System.out.println("Estes são os carros disponiveis para locação.");
                     ArrayList<Veiculo> carros = frota.apenasCarros();
                     frota.listarArray(carros);
@@ -166,7 +166,7 @@ public class App {
 
                     locacao.listarVeiculosLocados();
                     break;
-                    case 3:
+                    case "C":
 
                     System.out.println("Estes são os caminhoes e carros disponiveis para locação");
                     ArrayList<Veiculo> carrosOuCaminhoes = frota.carrosOuCaminhoes();
@@ -186,7 +186,7 @@ public class App {
 
                     locacao.listarVeiculosLocados();
                     break;
-                    case 4:
+                    case "D":
 
                     System.out.println("Estes são os veiculos disponiveis para locação");
                     ArrayList<Veiculo> todosMenosMotos = frota.todosMenosMotos();
