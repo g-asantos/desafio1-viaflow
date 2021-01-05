@@ -7,7 +7,7 @@ public class App {
         Frota frota = new Frota();
         Locacao locacao = new Locacao();
         Scanner in = new Scanner(System.in);
-
+        Utilities utils = new Utilities();
 
         boolean estaRodando = true;
 
@@ -129,7 +129,7 @@ public class App {
                     case "A":
                     System.out.println("Estas são as motos disponiveis para locação.");
                     ArrayList<Veiculo> motos = frota.apenasMotos();
-                    frota.listarArray(motos);
+                    utils.listarArray(motos);
                     System.out.println("Digite o número da moto que deseja");
                     int motoIndex = in.nextInt();
                     System.out.println("Digite seu número do whatsapp");
@@ -150,7 +150,7 @@ public class App {
                     case "B":
                     System.out.println("Estes são os carros disponiveis para locação.");
                     ArrayList<Veiculo> carros = frota.apenasCarros();
-                    frota.listarArray(carros);
+                    utils.listarArray(carros);
                     System.out.println("Digite o número do carro que deseja");
                     int carroIndex = in.nextInt();
                     System.out.println("Digite o seu número do whatsapp");
@@ -170,7 +170,7 @@ public class App {
 
                     System.out.println("Estes são os caminhoes e carros disponiveis para locação");
                     ArrayList<Veiculo> carrosOuCaminhoes = frota.carrosOuCaminhoes();
-                    frota.listarArray(carrosOuCaminhoes);
+                    utils.listarArray(carrosOuCaminhoes);
                     System.out.println("Digite o número do veículo que deseja");
                     int carrosOuCaminhoesIndex = in.nextInt();
                     System.out.println("Digite seu número do whatsapp");
@@ -190,7 +190,7 @@ public class App {
 
                     System.out.println("Estes são os veiculos disponiveis para locação");
                     ArrayList<Veiculo> todosMenosMotos = frota.todosMenosMotos();
-                    frota.listarArray(todosMenosMotos);
+                    utils.listarArray(todosMenosMotos);
                     System.out.println("Digite o número do veículo que deseja");
                     int todosMenosMotosIndex = in.nextInt();
                     System.out.println("Digite seu número do whatsapp");
