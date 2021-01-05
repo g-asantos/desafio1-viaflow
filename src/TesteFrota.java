@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class TesteFrota {
     public static void main(String[] args) {
         Frota frota = new Frota();
@@ -14,6 +16,19 @@ public class TesteFrota {
         frota.adicionarVeiculo(caminhao);
 
 
+
+        ArrayList<Veiculo> motosArrayList = frota.apenasMotos();
+        ArrayList<Veiculo> onibusArrayList = frota.todosMenosMotos();
+        ArrayList<Veiculo> carrosArrayList = frota.apenasCarros();
+        ArrayList<Veiculo> caminhaoArrayList = frota.carrosOuCaminhoes();
+
         frota.listarVeiculos();
+        frota.listarArray(motosArrayList);
+        frota.listarArray(onibusArrayList);
+        frota.listarArray(carrosArrayList);
+        frota.listarArray(caminhaoArrayList);
+
+        System.out.println(frota.verificarSeJáCadastrado(moto.getPlaca()));
+        
     }
 }

@@ -54,7 +54,7 @@ public class Locacao {
       
 
         for(int i = 0; i < locados.size(); i++){
-            if(dataAtual.equals(locados.get(i).getLocation_expiration())){
+            if(dataAtual.isAfter(locados.get(i).getLocation_expiration())){
                 System.out.println("\n A locacao do veiculo de placa " + locados.get(i).getPlaca() + " encerrou");
                 locados.remove(i);
                 
