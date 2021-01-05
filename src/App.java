@@ -113,6 +113,8 @@ public class App {
 
             } else if(escolha.equals("L")){
                 
+                locacao.checarLocacoesQueTerminaram();
+
                 int whatsApp;
 
                 System.out.println("Informe a categoria da sua CNH");

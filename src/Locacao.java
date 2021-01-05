@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 
 
@@ -14,8 +16,14 @@ public class Locacao {
     }
 
     public void listarVeiculosLocados(){
+        Utilities util = new Utilities();
+
+        if(locados.size() == 0){
+            System.out.println("Nao ha veiculos locados");
+        }
+
         for(VeiculoLocado v: locados){
-            System.out.println("\n " + "Veiculo de placa " + v.getPlaca() + ", o Whatsapp do locador é " + v.getWhatsapp());
+            System.out.println("\n " + "Veiculo de placa " + v.getPlaca() + ", o Whatsapp do locador é " + v.getWhatsapp() + ", e a locação expira no dia " + util.DateFormatter(v.getLocation_expiration()));
         }
     }
 
@@ -29,7 +37,31 @@ public class Locacao {
         return false;
     }
 
-	
+	public String terminarLocacao(String placa){
+        for(int i = 0; i < locados.size(); i++){
+            if(placa.equals(locados.get(i).getPlaca())){
+                locados.remove(i);
+                return placa;
+            }
+        }
+        return null;
+    }
+
+    public void checarLocacoesQueTerminaram(){
+
+        ZoneId timeZone = ZoneId.of( "America/Sao_Paulo" );
+        LocalDate dataAtual = LocalDate.now(timeZone);
+      
+
+        for(int i = 0; i < locados.size(); i++){
+            if(dataAtual.equals(locados.get(i).getLocation_expiration())){
+                System.out.println("A locacao do veiculo de placa " + locados.get(i).getPlaca() + " encerrou");
+                locados.remove(i);
+                
+            }
+        }
+
+    }
     
     
 }
